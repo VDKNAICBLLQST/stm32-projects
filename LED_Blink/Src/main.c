@@ -8,12 +8,12 @@ int main(void)
 
 	*pRCC_AHB1ENR |= 1 << 3;
 
-	*pGPIOD_MODER &= ~(3 << 24);
-	*pGPIOD_MODER |= (1 << 24);
+	*pGPIOD_MODER &= ~(0xFF << 24);
+	*pGPIOD_MODER |= (0x55 << 24);
 
 	while(1)
 	{
-		*pGPIOD_ODR ^= 0x00001000;
+		*pGPIOD_ODR ^= 0x0000F000;
 
 		for(int i = 0; i < 500000; i++);
 	}
